@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import banner from '../../assets/hero.png'
 
-export const Container = styled.div`
+export const HeroContainer = styled.div`
     width: 100%;
     height: 360px;
     display: flex;

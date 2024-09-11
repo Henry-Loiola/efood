@@ -13,8 +13,8 @@ export const Container = styled.div`
 export const List = styled.ul`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    colum-ga: 32px;
-    row-gap: 32p;
+    column-gap: 32px;
+    row-gap: 32px;
 `
 
 export const Modal = styled.div`
@@ -24,8 +24,9 @@ export const Modal = styled.div`
     width: 100%;
     heigth: 100%;
     display: none;
-    align-itemsn: center;
+    align-items: center;
     justify-content: center;
+    z-index: 2;
 
     &.visible {
         display: flex;
@@ -48,7 +49,7 @@ export const ModalContent = styled.div`
     display: flex;
     flex-direction: row;
     position: relative;
-    z-index: 1;
+    z-index: 3;
 
     ${AddCartButton} {
         margin: 0;
@@ -60,6 +61,7 @@ export const FoodImage = styled.img`
     width: 280px;
     heigth: 280px;
     margin: 32px 24px 32px 32px;
+    object-fit: cover;
 `
 
 export const ModalContainer = styled.div`
@@ -73,7 +75,7 @@ export const FoodTitle = styled.h3`
     font-weight: 900;
     color: ${cores.branco};
     line-heigth: 21.09px;
-    display: flex;
+    display: block;
 `
 
 export const FoodDescription = styled.p`

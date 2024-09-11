@@ -2,15 +2,15 @@ import { useState } from 'react'
 import Food from '../Food'
 import { AddCartButton } from '../Food/styles'
 import { Container, List, Modal, ModalContent, FoodImage, ModalContainer, FoodTitle, FoodDescription, CloseIcon } from './styles'
-import FoodModel from '../../models/Food'
 import close from '../../assets/closeimg.png'
+import { Restaurant } from '../../pages/Home'
 import React from 'react'
 
 export type Props = {
-    foods: FoodModel[]
+    restaurant: Restaurant
 }
 
-const FoodList = ({ foods }: Props) => {
+const FoodList = ({ restaurant }: Props) => {
     const [showModal, setShowModal] = useState(false)
     const [foodTitle, setFoodTitle] = useState('')
     const [foodDescription, setFoodDescription] = useState('')
@@ -18,30 +18,36 @@ const FoodList = ({ foods }: Props) => {
     const [foodImageAlt, setFoodImageAlt] = useState('')
     const [foodServe, setFoodServe] = useState('')
     const [foodPrice, setFoodPrice] = useState(0)
+    const priceFormat = (price: number) => {
+        return new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        }).format(price)
+    }
 
     return (
         <>
             <Container>
                 <List>
-                    { foods.map((food) => (
+                    {restaurant.cardapio.map((food) => (
                         <li
                             key={food.id}
                             onClick={() => {
                                 setShowModal(true)
-                                setFoodTitle(food.foodTitle)
-                                setFoodDescription(food.foodDescription)
-                                setFoodServe(food.foodServe)
-                                setFoodPrice(food.foodPrice)
-                                setFoodImageAlt(food.foodPhotoAlt)
-                                setFoodImage(food.foodPhoto)
+                                setFoodTitle(food.nome)
+                                setFoodDescription(food.descricao)
+                                setFoodServe(food.porcao)
+                                setFoodPrice(food.preco)
+                                setFoodImageAlt(food.nome)
+                                setFoodImage(food.foto)
                             }}
                         >
                             <Food 
                                 key={food.id}
-                                FoodImage={food.foodPhoto}
-                                FoodTitle={food.foodTitle}
-                                FoodDescription={food.foodDescription}
-                                FoodImageAlt={food.foodPhotoAlt}
+                                FoodImage={food.foto}
+                                FoodTitle={food.nome}
+                                FoodDescription={food.descricao}
+                                FoodImageAlt={food.nome}
                             />
                         </li>
                     ))}
@@ -57,7 +63,7 @@ const FoodList = ({ foods }: Props) => {
                             <p>Serve: {foodServe}</p>
                         </FoodDescription>
                         <AddCartButton to={''}>
-                            Adicionar ao carrinho - R$ {foodPrice}
+                            Adicionar ao carrinho - R$ {priceFormat(foodPrice)}
                         </AddCartButton>
                     </ModalContainer>
                     <CloseIcon 

@@ -8,6 +8,13 @@ export type Props = {
     FoodImageAlt: string
 }
 
+export const reduceDescription = (description: string) => {
+    if (description.length > 128) {
+        return description.slice(0, 121) + '...'
+    }
+    return description
+}
+
 const Food = ({
     FoodImage,
     FoodTitle,
@@ -17,7 +24,7 @@ const Food = ({
     <Card>
         <Image src={FoodImage} alt={FoodImageAlt}/>
         <Title>{FoodTitle}</Title>
-        <Description>{FoodDescription}</Description>
+        <Description>{reduceDescription(FoodDescription)}</Description>
         <AddCartButton to={''}>Adicionar ao carrinho</AddCartButton>
     </Card>
 )

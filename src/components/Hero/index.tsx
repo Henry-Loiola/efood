@@ -1,13 +1,13 @@
 import React from 'react'
-import { Container, Titulo, Logo } from './styles'
+import { HeroContainer, Titulo, Logo } from './styles'
 
 import logo from '../../assets/logo.png'
 
 const Hero = () => (
-    <Container>
+    <HeroContainer>
         <Logo src={logo} alt="Logo do efood" />
         <Titulo>Viva experiências gastronômicas no conforto da sua casa</Titulo>
-    </Container>
+    </HeroContainer>
 )
 
 export default Hero
