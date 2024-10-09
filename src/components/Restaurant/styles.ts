@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Card = styled.div`
     background-color: ${cores.branco};
@@ -40,7 +40,9 @@ export const Rate = styled.div`
         margin-right: 8px;
     }
     img {
-        margin-right: 8px;
+        @media (max-width: ${breakpoints.tablet}) {
+            width: 100%;
+        }
     }
     display: flex;
 `

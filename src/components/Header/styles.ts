@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import fundo from '../../assets/hero.png'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const HeaderStyle = styled.header`
     background-image: url(${fundo});
@@ -12,13 +12,24 @@ export const HeaderStyle = styled.header`
         display: flex;
         justify-content: space-between;
         margin: 0 auto;
+
+        @media (max-width: ${breakpoints.tablet}) {
+            padding: 39px 10px;
+        }
+
+        @media (max-width: ${breakpoints.mobile}) {
+            display: inline-block
+        }
 }
 `
 
 export const Logo = styled.img`
-    width: 125px;
+    max-width: 125px;
     height: 57.5px;
-    margin-top: 39px;
+    width: 100%;
+    @media (max-width: ${breakpoints.mobile}) {
+        margin: 15px;
+    }
 `
 
 export const LinkRestaurantes = styled.a`
@@ -27,10 +38,18 @@ export const LinkRestaurantes = styled.a`
     text-decoration: none;
     color: ${cores.vermelho};
     margin-top: 39px;
+    @media (max-width: ${breakpoints.mobile}) {
+        margin-top: 0;
+    }
 `
 
 export const TextoCart = styled.p`
     font-size: 18px;
     font-weight: bold;
     margin-top: 39px;
+    cursor: pointer;
+
+    @media (max-width: ${breakpoints.mobile}) {
+        margin-top: 0;
+    }
 `

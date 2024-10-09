@@ -7,6 +7,13 @@ export const cores = {
     dourado: '#FFB930',
     palhaClara: '#FFF8F2'
 }
+
+export const breakpoints = {
+    desktop: '1024px',
+    tablet: '821px',
+    mobile: '425px'
+}
+
 export const GlobalCSS = createGlobalStyle`
 *{
     margin: 0;

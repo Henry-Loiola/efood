@@ -1,16 +1,27 @@
 import { useState } from 'react'
 import Food from '../Food'
-import { AddCartButton } from '../Food/styles'
+import { AddCartButton } from './styles'
 import { Container, List, Modal, ModalContent, FoodImage, ModalContainer, FoodTitle, FoodDescription, CloseIcon } from './styles'
 import close from '../../assets/closeimg.png'
-import { Restaurant } from '../../pages/Home'
+import { Restaurant, Pedido } from '../../pages/Home'
+import { useDispatch, useSelector } from 'react-redux'
+import { addItem, open } from '../../store/reducers/cart'
+
 import React from 'react'
 
 export type Props = {
     restaurant: Restaurant
+    pedido: Pedido
 }
 
-const FoodList = ({ restaurant }: Props) => {
+export const priceFormat = (price: number) => {
+    return new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+    }).format(price)
+}
+
+const FoodList = ({ restaurant, pedido }: Props) => {
     const [showModal, setShowModal] = useState(false)
     const [foodTitle, setFoodTitle] = useState('')
     const [foodDescription, setFoodDescription] = useState('')
@@ -18,11 +29,17 @@ const FoodList = ({ restaurant }: Props) => {
     const [foodImageAlt, setFoodImageAlt] = useState('')
     const [foodServe, setFoodServe] = useState('')
     const [foodPrice, setFoodPrice] = useState(0)
-    const priceFormat = (price: number) => {
-        return new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-        }).format(price)
+    const [foodId, setFoodId] = useState(0)
+
+    const dispatch = useDispatch()
+    const addToCart = () => {
+        pedido.id = foodId
+        pedido.nome = foodTitle
+        pedido.foto = foodImage
+        pedido.preco = foodPrice
+        dispatch(addItem(pedido))
+        setShowModal(false)
+        dispatch(open())
     }
 
     return (
@@ -40,6 +57,7 @@ const FoodList = ({ restaurant }: Props) => {
                                 setFoodPrice(food.preco)
                                 setFoodImageAlt(food.nome)
                                 setFoodImage(food.foto)
+                                setFoodId(food.id)
                             }}
                         >
                             <Food 
@@ -62,7 +80,7 @@ const FoodList = ({ restaurant }: Props) => {
                             {foodDescription}
                             <p>Serve: {foodServe}</p>
                         </FoodDescription>
-                        <AddCartButton to={''}>
+                        <AddCartButton onClick={addToCart}>
                             Adicionar ao carrinho - R$ {priceFormat(foodPrice)}
                         </AddCartButton>
                     </ModalContainer>

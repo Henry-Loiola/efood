@@ -1,32 +1,38 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { Link } from 'react-router-dom'
 
 export const Card = styled.div`
     background-color: ${cores.vermelho};
     color: ${cores.palhaClara};
     max-width: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    padding: 8px
 `
 
 export const Image = styled.img`
-    margin: 8px;
+    height: 100%;
     max-width: 304px;
     max-height: 167px;
     width: 100%;
     object-fit: cover;
+
+    @media (max-width: ${breakpoints.tablet}) {
+        object-fit: fill;
+    }
 `
 
 export const Title = styled.h3`
     font-size: 16px;
     font-weight: 900;
-    margin: 0 8px;
+    margin: 8px 0;
 `
 
 export const Description = styled.p`
     font-size: 14px;
-    margin: 8px 8px 0px 8px;
+    margin-bottom: 8px;
 `
 
 export const AddCartButton = styled(Link)`
@@ -34,7 +40,7 @@ export const AddCartButton = styled(Link)`
     color: ${cores.vermelho};
     border: none;
     padding: 4px 7px;
-    margin: 8px;
+
     font-weight: 700;
     text-decoration: none;
     text-align: center;
