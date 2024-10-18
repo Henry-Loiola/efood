@@ -4,10 +4,7 @@ import { breakpoints } from '../../styles'
 export const Container = styled.div`
     max-width: 1024px;
     margin: 80px auto;
-    @media (max-width: ${breakpoints.tablet}) {
-        margin: 20px 10px;
-    }
-    @media (max-width: ${breakpoints.mobile}) {
+    @media (max-width: ${breakpoints.desktop}) {
         margin: 20px 10px;
     }
 `

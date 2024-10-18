@@ -1,15 +1,21 @@
 import Product from '../Restaurant'
 import { Container, List } from './styles'
-import { Restaurant } from '../../pages/Home'
 import React, { useState } from 'react'
+import Loader from '../Loader'
 
 export type Props = {
     restaurants: Restaurant[]
+    isLoading: boolean
 }
 
-const ProductList = ({ restaurants }: Props) => {
+const ProductList = ({ restaurants, isLoading }: Props) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [destaque, setDestaque] = useState('Destaque da semana')
+    const [destaque] = useState('Destaque da semana')
+
+    if (isLoading) {
+        return <Loader />
+    }
+
     return (
         <Container>
             <List>

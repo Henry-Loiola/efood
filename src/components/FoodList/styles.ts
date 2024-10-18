@@ -21,6 +21,7 @@ export const List = styled.ul`
     @media (max-width: ${breakpoints.tablet}) {
         grid-template-columns: 1fr 1fr;
         margin: 0 10px;
+        row-gap: 10px;
     }
     
     @media (max-width: ${breakpoints.mobile}) {
@@ -123,4 +124,5 @@ export const AddCartButton = styled.button`
     text-decoration: none;
     text-align: center;
     font-size: 14px;
+    cursor: pointer;
 `

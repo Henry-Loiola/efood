@@ -2,6 +2,9 @@ import styled from 'styled-components'
 import { breakpoints, cores } from '../../styles'
 
 export const ApresentacaoContainer = styled.div`
+    @media (max-width: ${breakpoints.desktop}) {
+        height: 100%;
+    }
     height: 280px;
     background-repeat: no-repeat;
     background-size: cover;

@@ -14,6 +14,7 @@ export const Overlay = styled.div`
 
 export const CartContainer = styled.div`
     position: fixed;
+
     top: 0;
     left: 0;
     width: 100%;
@@ -22,11 +23,11 @@ export const CartContainer = styled.div`
     justify-content: flex-end;
     z-index: 1;
     &.is-open {
-        display: flex;
-    }
+    display: flex;
+}
 `
 
-export const AddCartButton = styled.button`
+export const AddCartButton = styled.a`
     background-color: ${cores.rosa};
     color: ${cores.vermelho};
     border: none;
@@ -37,6 +38,21 @@ export const AddCartButton = styled.button`
     font-size: 14px;
     display: block;
     width: 100%;
+    cursor: pointer;
+`
+
+export const SubmitCartButton = styled.button`
+    background-color: ${cores.rosa};
+    color: ${cores.vermelho};
+    border: none;
+    padding: 4px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    cursor: pointer;
 `
 
 export const Sidebar = styled.aside`
@@ -50,8 +66,8 @@ export const Sidebar = styled.aside`
     width: 100%;
     position: relative;
     @media (max-width: ${breakpoints.tablet}) {
-        max-width: 220px;
-    }
+    max-width: 220px;
+}
 `
 export const ItemCart = styled.li`
     background-color: ${cores.rosa};
@@ -60,7 +76,6 @@ export const ItemCart = styled.li`
     position: relative;
     margin-bottom: 16px;
 `
-
 export const ImageItem = styled.img`
     width: 80px;
     height: 80px;
@@ -71,17 +86,16 @@ export const InfosItem = styled.div`
     display: flex;
     flex-direction: column;
     h3 {
-        font-weight: 900;
-        font-size: 18px;
-        line-height: 21.09px;
-    }
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 21.09px;
+}
     span {
-        margin: 16px 0 33px 0;
-        font-weight: 400;
-        font-size: 14px;
-    }
+    margin: 16px 0 33px 0;
+    font-weight: 400;
+    font-size: 14px;
+}
 `
-
 export const DeleteItemButton = styled.button`
     width: 16px;
     height: 16px;
@@ -93,7 +107,6 @@ export const DeleteItemButton = styled.button`
     border: none;
     cursor: pointer;
 `
-
 export const InfosCart = styled.div`
     display: flex;
     justify-content: space-between;
@@ -101,4 +114,10 @@ export const InfosCart = styled.div`
     color: ${cores.palhaClara};
     weight: 700;
     font-size: 14px;
+`
+export const CartStage = styled.div`
+    display: block;
+    &.is-checkout {
+    display: none;
+}
 `

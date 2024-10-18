@@ -8,6 +8,7 @@ export const Card = styled.div`
     .ContainerTop {
         display: flex;
         justify-content: space-between;
+        padding: 8px;
     }
     position: relative;
 `
@@ -21,8 +22,6 @@ export const Image = styled.img`
 export const Title = styled.h3`
     font-size: 18px;
     font-weight: bold;
-    margin-top: 8px;
-    margin-left: 8px;
 `
 
 export const Description = styled.p`
